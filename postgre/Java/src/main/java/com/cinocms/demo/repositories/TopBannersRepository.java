@@ -1,0 +1,10 @@
+package com.cinocms.demo.repositories;
+
+import com.cinocms.demo.model.TopBannersEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface TopBannersRepository extends JpaRepository<TopBannersEntity,Integer > {
+    @Query(value = "SELECT * FROM top_banners ORDER BY id_top_banner LIMIT 1",nativeQuery = true)
+    TopBannersEntity findFirst();
+}
